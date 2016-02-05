@@ -1,10 +1,12 @@
 class CreatePoints < ActiveRecord::Migration
     create_table :points do |t|
-      t.integer :id
+      t.integer :point_num
       t.integer :elevation
       t.string :datetime
-      t.string :description
+      t.text :description
       t.integer :longitude
       t.integer :latitude
+
+      t.timestamps
     end
 end

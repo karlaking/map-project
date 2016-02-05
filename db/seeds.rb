@@ -5,17 +5,17 @@ def convert_from_json(file)
   my_hash = JSON.parse(points)
 end
 
-points_hash = convert_from_json('groundTruthPoints.json')
+points_hash = convert_from_json('db/groundTruthPoints.json')
 features =  points_hash["features"]
+puts features
 
 
 features.each do |point|
-  Point.create! (
-  id: point ["attributes"]["ID"],
-  elevation: point["attributes"]["Elevation"],
-  datetime: point["attributes"]["DateTimeS"],
-  description: point["attributes"]["Description"],
-  longitude: point["geometry"]['x'],
-  latitude: point["geometry"]['y']
-  )
+  point_num = point["attributes"]["ID"]
+  elevation = point["attributes"]["Elevation"]
+  datetime = point["attributes"]["DateTimeS"]
+  description = point["attributes"]["Description"]
+  longitude = point["geometry"]['x']
+  latitude = point["geometry"]['y']
+  Point.create(point_num: point_num, elevation: elevation, datetime: datetime, description: description, longitude: longitude, latitude: latitude)
 end
