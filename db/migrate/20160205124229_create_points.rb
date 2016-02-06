@@ -4,8 +4,8 @@ class CreatePoints < ActiveRecord::Migration
       t.integer :elevation
       t.string :datetime
       t.text :description
-      t.integer :longitude
-      t.integer :latitude
+      t.float :longitude
+      t.float :latitude
 
       t.timestamps
     end
